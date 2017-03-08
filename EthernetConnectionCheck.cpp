@@ -36,7 +36,6 @@ EthernetConnectionCheck::EthernetConnectionCheck()
 
 EthernetConnectionCheck::~EthernetConnectionCheck()
 {
-    qDebug() << "EthernetConnectionCheck::~EthernetConnectionCheck";
 }
 
 void EthernetConnectionCheck::setConnectionRetriesCount(int count)
@@ -46,8 +45,6 @@ void EthernetConnectionCheck::setConnectionRetriesCount(int count)
 
 void EthernetConnectionCheck::run()
 {
-    qDebug() << "EthernetConnectionCheck::run";
-
     int retry = 0;
     while ((retry < retries) && !shouldStop) {
         int val = static_cast<int>(((double)(retry +1) / (double)retries) * 100.0);
@@ -75,7 +72,6 @@ void EthernetConnectionCheck::run()
 
 void EthernetConnectionCheck::stop()
 {
-    qDebug() << "EthernetConnectionCheck::stop";
     shouldStop = true;
     if(isRunning()){
         wait();

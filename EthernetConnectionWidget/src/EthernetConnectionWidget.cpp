@@ -168,7 +168,6 @@ bool EthernetConnectionWidget::isConnected(void) const
 
 void EthernetConnectionWidget::setAddress(const QString &address)
 {
-    qDebug() << "EthernetConnectionWidget::setAddress " << address;
     address_lineedit_->setText(address);
 }
 

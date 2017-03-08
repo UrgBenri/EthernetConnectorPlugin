@@ -161,8 +161,6 @@ bool EthernetConnectorPlugin::isIntensityMode()
 
 EthernetConnectorPlugin::~EthernetConnectorPlugin()
 {
-    //    qDebug() << "EthernetCommunicatorWidget::~EthernetCommunicatorWidget";
-
     if(m_receiving_thread){
         if(m_receiving_thread->isRunning()){
             m_receiving_thread->stop();
@@ -187,7 +185,6 @@ EthernetConnectorPlugin::~EthernetConnectorPlugin()
 
 void EthernetConnectorPlugin::start()
 {
-    qDebug() << "EthernetCommunicatorWidget::start";
     if (!m_connected) {
         return;
     }
@@ -226,7 +223,6 @@ void EthernetConnectorPlugin::start()
 
 void EthernetConnectorPlugin::stop()
 {
-    qDebug() << "EthernetCommunicatorWidget::stop";
     addDebugInformation(tr("Stopping acquisition if active"));
     if (!m_connected) {
         return;
@@ -250,7 +246,6 @@ void EthernetConnectorPlugin::stop()
 
 void EthernetConnectorPlugin::pause()
 {
-    qDebug() << "EthernetCommunicatorWidget::pause";
     if (!m_connected) {
         return;
     }
@@ -286,8 +281,6 @@ void EthernetConnectorPlugin::updateCaptureMode(RangeCaptureMode mode)
 
 void EthernetConnectorPlugin::connectPressed(bool connection, const QString &device, unsigned short port)
 {
-    qDebug() << "EthernetCommunicatorWidget::connectPressed " << connection;
-
     if (connection) {
         addDebugInformation(tr("Connection requested"));
         m_connection_widget->setConnected(true);
@@ -380,7 +373,6 @@ void EthernetConnectorPlugin::deviceConnected()
 
 void EthernetConnectorPlugin::deviceConnectFailed()
 {
-    qDebug() << "EthernetCommunicatorWidget::deviceConnectFailed";
     ui->loadActivityIndicator->hide();
     ui->loadActivityIndicator->setInvertedAppearance(false);
     stop();
@@ -404,8 +396,6 @@ void EthernetConnectorPlugin::deviceConnectFailed()
 
 void EthernetConnectorPlugin::updateUiWithInfo()
 {
-    qDebug() << "EthernetCommunicatorWidget::updateUiWithInfo";
-
     //    RangeSensorInformation urgInfo = m_urg->information();
     RangeSensorParameter urgParam = m_sensor->parameter();
 
@@ -451,21 +441,18 @@ void EthernetConnectorPlugin::resetUi()
 
 void EthernetConnectorPlugin::stepSpinChanged(int value)
 {
-    qDebug() << "EthernetCommunicatorWidget::stepSpinChanged " << value;
     Q_UNUSED(value);
     restart();
 }
 
 void EthernetConnectorPlugin::ariaComboChanged(int value)
 {
-    qDebug() << "EthernetCommunicatorWidget::ariaComboChanged " << value;
     Q_UNUSED(value);
     restart();
 }
 
 void EthernetConnectorPlugin::mirrorSpinhanged(int value)
 {
-    qDebug() << "EthernetCommunicatorWidget::mirrorSpinhanged " << value;
     Q_UNUSED(value);
     restart();
 }
@@ -737,8 +724,6 @@ void EthernetConnectorPlugin::addSensorInformation(PluginManagerInterface *manag
 
 void EthernetConnectorPlugin::rebootSensor()
 {
-    qDebug() << "EthernetCommunicatorWidget::rebootSensor";
-
     if (m_sensor->isConnected()) {
         if(shouldStop()) return;
         QVector<string> lines;
@@ -775,8 +760,6 @@ void EthernetConnectorPlugin::rebootSensor()
 
 void EthernetConnectorPlugin::resetSensor()
 {
-    qDebug() << "EthernetCommunicatorWidget::resetSensor";
-
     if (m_sensor->isConnected()) {
         bool started = isStarted();
         if(started && shouldStop()) return;
@@ -795,7 +778,6 @@ void EthernetConnectorPlugin::resetSensor()
 
 void EthernetConnectorPlugin::receivingThreadFinished()
 {
-    qDebug() << "EthernetCommunicatorWidget::receivingThreadFinished";
     emit information(LogHeader,
                      tr("Data acquisition finished."));
     if(!m_receiving_thread->isRunning()) stop();
@@ -816,7 +798,6 @@ bool EthernetConnectorPlugin::setCaptureMode()
 
 void EthernetConnectorPlugin::startStepChanged(int value)
 {
-    qDebug() << "EthernetCommunicatorWidget::startStepChanged " << value;
     ui->endStep->setMinimum(value);
 
     m_range_view_widget->setRange(ui->startStep->value(), ui->endStep->value());
@@ -826,7 +807,6 @@ void EthernetConnectorPlugin::startStepChanged(int value)
 
 void EthernetConnectorPlugin::endStepChanged(int value)
 {
-    qDebug() << "EthernetCommunicatorWidget::endStepChanged " << value;
     ui->startStep->setMaximum(value);
 
     m_range_view_widget->setRange(ui->startStep->value(), ui->endStep->value());
@@ -835,7 +815,6 @@ void EthernetConnectorPlugin::endStepChanged(int value)
 
 void EthernetConnectorPlugin::groupStepsChanged(int value)
 {
-    qDebug() << "EthernetCommunicatorWidget::groupStepsChanged " << value;
     Q_UNUSED(value);
     restart();
 }
@@ -843,7 +822,6 @@ void EthernetConnectorPlugin::groupStepsChanged(int value)
 
 void EthernetConnectorPlugin::skipScansChanged(int value)
 {
-    qDebug() << "EthernetCommunicatorWidget::skipScansChanged " << value;
     Q_UNUSED(value);
     restart();
 }
@@ -862,19 +840,14 @@ void EthernetConnectorPlugin::receivingTimerProcess()
     long l_timeStamp = 0;
 
     int n = m_sensor->capture(l_ranges, l_levels, l_timeStamp);
-    //qDebug() << "urg.capture";
     if (n <= 0) {
         return;
     }
     setLengthData(l_ranges, l_levels, l_timeStamp);
-
-    qDebug() << "Elapsed time: " << m_stopWatch.elapsed() << "ms";
 }
 
 void  EthernetConnectorPlugin::restart()
 {
-    qDebug() << "EthernetCommunicatorWidget::restart";
-
     if (m_started) {
         stop();
         delay(m_sensor->scanMsec());
@@ -891,13 +864,9 @@ void  EthernetConnectorPlugin::restart()
 
 int EthernetConnectorPlugin::receivingThreadProcess(void* args)
 {
-    qDebug() << "EthernetCommunicatorWidget::receivingThreadProcess";
-
     EthernetConnectorPlugin* obj = static_cast<EthernetConnectorPlugin*>(args);
     int errorCnt = 0;
     int maxErrorCnt = 5;
-
-    qDebug() << "EthernetCommunicatorWidget thread started";
 
     SensorDataArray l_ranges;
     SensorDataArray l_levels;
@@ -928,21 +897,16 @@ int EthernetConnectorPlugin::receivingThreadProcess(void* args)
         errorCnt = 0;
     }
 
-    qDebug() << "EthernetCommunicatorWidget thread finished";
     return 0;
 }
 
 void EthernetConnectorPlugin::errorHappened()
 {
-    qDebug() << "EthernetCommunicatorWidget::errorHappened";
-
     addDebugInformation(tr("Sensor error: %1").arg(m_sensor->what()));
 }
 
 void EthernetConnectorPlugin::errorHandle()
 {
-    qDebug() << "EthernetCommunicatorWidget::errorHandle";
-
     emit error(QApplication::applicationName(),
                tr("Error accured in the sensor.") + QString("\n")
                .arg(m_sensor->what()));
