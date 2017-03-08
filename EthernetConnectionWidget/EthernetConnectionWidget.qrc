@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/EthernetConnectionWidget">
+        <file alias="connect_icon">img/connect.png</file>
+        <file alias="disconnect_icon">img/disconnect.png</file>
+    </qresource>
+</RCC>

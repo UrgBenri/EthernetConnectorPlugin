@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ModeSwitcherWidget</class>
+ <widget class="QWidget" name="ModeSwitcherWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>229</width>
+    <height>54</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <property name="spacing">
+    <number>2</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="ModeSwitchButton" name="continuousCheck">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>75</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="toolTip">
+      <string/>
+     </property>
+     <property name="text">
+      <string>Continuous</string>
+     </property>
+     <property name="icon">
+      <iconset resource="ModeSwitcherWidget.qrc">
+       <normaloff>:/ModeSwitcherWidget/no_continous_icon</normaloff>
+       <normalon>:/ModeSwitcherWidget/continous_icon</normalon>
+       <selectedoff>:/ModeSwitcherWidget/no_continous_icon</selectedoff>:/ModeSwitcherWidget/no_continous_icon</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="toolButtonStyle">
+      <enum>Qt::ToolButtonTextUnderIcon</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="ModeSwitchButton" name="intensityCheck">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>75</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="toolTip">
+      <string>Intensity</string>
+     </property>
+     <property name="text">
+      <string>Intensity</string>
+     </property>
+     <property name="icon">
+      <iconset resource="ModeSwitcherWidget.qrc">
+       <normaloff>:/ModeSwitcherWidget/no_intensity_icon</normaloff>
+       <normalon>:/ModeSwitcherWidget/intensity_icon</normalon>
+       <selectedoff>:/ModeSwitcherWidget/no_intensity_icon</selectedoff>:/ModeSwitcherWidget/no_intensity_icon</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="toolButtonStyle">
+      <enum>Qt::ToolButtonTextUnderIcon</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="ModeSwitchButton" name="multiechoCheck">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>75</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="toolTip">
+      <string>Multi-echo</string>
+     </property>
+     <property name="text">
+      <string>Multi-Echos</string>
+     </property>
+     <property name="icon">
+      <iconset resource="ModeSwitcherWidget.qrc">
+       <normaloff>:/ModeSwitcherWidget/no_multiecho_icon</normaloff>
+       <normalon>:/ModeSwitcherWidget/multiecho_icon</normalon>
+       <selectedoff>:/ModeSwitcherWidget/no_multiecho_icon</selectedoff>:/ModeSwitcherWidget/no_multiecho_icon</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="toolButtonStyle">
+      <enum>Qt::ToolButtonTextUnderIcon</enum>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ModeSwitchButton</class>
+   <extends>QToolButton</extends>
+   <header>ModeSwitchButton.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="ModeSwitcherWidget.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/ModeSwitcherWidget">
+        <file alias="continous_icon">img/continous.png</file>
+        <file alias="multiecho_icon">img/multiecho.png</file>
+        <file alias="intensity_icon">img/intensity.png</file>
+        <file alias="no_continous_icon">img/no_continous.png</file>
+        <file alias="no_multiecho_icon">img/no_multiecho.png</file>
+        <file alias="no_intensity_icon">img/no_intensity.png</file>
+    </qresource>
+</RCC>

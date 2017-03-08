@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/EthernetConnectorPlugin">
+        <file alias="tabIcon">img/ethernet.png</file>
+        <file alias="info_icon">img/info.png</file>
+        <file alias="settings">img/settings.png</file>
+    </qresource>
+    <!--
+    <qresource prefix="/EthernetConnectorPlugin/translations">
+    <file alias="plugin.en">i18n/plugin_en.qm</file>
+    <file alias="plugin.fr">i18n/plugin_fr.qm</file>
+    <file alias="plugin.ja">i18n/plugin_ja.qm</file>
+    </qresource>
+     -->
+</RCC>
